@@ -1,0 +1,52 @@
+# ✅ ขั้นตอนที่ 1: เตรียมเครื่อง Hetzner ให้พร้อมใช้งาน
+# (เหมาะสำหรับ Boss ที่ต้องการติดตั้งบน Hetzner ก่อน R240)
+
+# ✅ ขั้นตอนที่ 2: สร้างไฟล์ docker-compose.yml และ push ไป Git Repo ส่วนตัว
+# - ใช้ GitHub, GitLab, หรือ Gitea (ติดตั้งเองก็ได้)
+# - ตัวอย่างไฟล์อยู่ด้านล่างนี้
+
+version: '3.8'
+
+services:
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - nextcloud_data:/var/www/html
+    environment:
+      - MYSQL_PASSWORD=nextcloudpass
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=db
+
+  db:
+    image: mariadb:10.6
+    container_name: nextcloud_db
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=supersecretroot
+      - MYSQL_PASSWORD=nextcloudpass
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+volumes:
+  nextcloud_data:
+  db_data:
+
+# ✅ ขั้นตอนที่ 3: เปิดหน้า Portainer → Stacks → Add Stack
+# - เลือกแบบ Git Repository
+# - ใส่ URL ของ Git Repo ที่มีไฟล์ docker-compose.yml นี้
+# - ถ้ามี .env แยก ให้สร้างไว้ใน Repo เดียวกันด้วย
+
+# ✅ ขั้นตอนที่ 4: Deploy Stack
+# - กด Deploy the stack แล้วรอ Container ทำงาน
+# - เปิด Browser ไปที่ http://<server-ip>:8080 เพื่อเริ่มตั้งค่า Nextcloud
+
+# ✅ หมายเหตุ:
+# - หากใช้ Docker Volumes แบบนี้ → ข้อมูลปลอดภัยไม่หายเวลาอัปเดต
+# - Boss สามารถย้าย Stack นี้ไปยัง R240 ได้ในอนาคต เพียงแค่ Clone Repo แล้ว Deploy ใหม่
