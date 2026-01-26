@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         {/* ✅ Google Analytics */}
         <Script
           strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-JEV5H7KRQC"
+          src="https://www.googletagmanager.com/gtag/js?id=G-JEV5H7KRQC"}
         />
         <Script strategy="afterInteractive">
           {`
