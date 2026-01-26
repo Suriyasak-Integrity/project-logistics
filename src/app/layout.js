@@ -1,5 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
+import Script from 'next/script'; // ✅ เพิ่มบรรทัดนี้
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -15,6 +16,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={fontLoader.className}>
+
+        {/* ✅ Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-JEV5H7KRQC"
+        />
+        <Script strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JEV5H7KRQC');
+          `}
+        </Script>
+
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <>
             <Header />
@@ -22,6 +38,7 @@ export default function RootLayout({ children }) {
             <Footer />
           </>
         </ThemeProvider>
+
       </body>
     </html>
   );
