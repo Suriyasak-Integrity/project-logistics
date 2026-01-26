@@ -41,12 +41,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-```
-
----
-
-### **ขั้นตอนที่ 5: Commit ใหม่**
-
-**Commit message:**
-```
-fix: change var to const in layout.js (force update)
