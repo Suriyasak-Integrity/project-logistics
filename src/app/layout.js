@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({
-  subsets: ['latin']
+  subsets: ['latin'],
 });
 
 export const metadata = {
@@ -18,11 +18,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-JEV5H7KRQC"
         />
-        <Script strategy="afterInteractive">
+
+        <Script
+          id="google-analytics-inline"
+          strategy="afterInteractive"
+        >
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -30,12 +35,11 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-JEV5H7KRQC');
           `}
         </Script>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <>
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </>
+
+        <ThemeProvider>
+          <Header />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
