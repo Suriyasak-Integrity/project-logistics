@@ -1,6 +1,8 @@
+'use client';
+
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Script from 'next/script'; // ✅ เพิ่มบรรทัดนี้
+import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
