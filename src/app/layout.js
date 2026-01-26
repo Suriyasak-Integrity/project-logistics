@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* ✅ Google Analytics */}
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-JEV5H7KRQC"
@@ -42,3 +41,12 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+```
+
+---
+
+### **ขั้นตอนที่ 5: Commit ใหม่**
+
+**Commit message:**
+```
+fix: change var to const in layout.js (force update)
