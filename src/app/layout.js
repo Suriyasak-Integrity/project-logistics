@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-
         {/* ✅ Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -32,7 +31,6 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-JEV5H7KRQC');
           `}
         </Script>
-
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <>
             <Header />
@@ -40,7 +38,6 @@ export default function RootLayout({ children }) {
             <Footer />
           </>
         </ThemeProvider>
-
       </body>
     </html>
   );
