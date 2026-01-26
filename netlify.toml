@@ -5,6 +5,8 @@
   NODE_VERSION = "18"
   NEXT_TELEMETRY_DISABLED = "1"
   NEXT_TYPESCRIPT_COMPILE_ERROR = "ignore"
+  NPM_FLAGS = "--prefer-offline --no-audit"
+  NETLIFY_USE_BUN = "false"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
