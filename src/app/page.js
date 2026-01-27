@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TrackingForm } from '@/components/TrackingForm';
 import { ArrowRightIcon, ArrowsRightLeftIcon, TruckIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import ChatbotWidget from "@/components/ChatbotWidget";
 
 export default function Home() {
   return (
@@ -225,6 +226,9 @@ export default function Home() {
           </Link>
         </div>
       </section>
+  
+      {/* Chatbot */}
+      <ChatbotWidget />
     </div>
   );
 }
