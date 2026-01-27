@@ -1,9 +1,4 @@
 /* ===============================
-   Load Fonts
-=============================== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500&display=swap');
-
-/* ===============================
    Tailwind Base
 =============================== */
 @tailwind base;
@@ -11,24 +6,24 @@
 @tailwind utilities;
 
 /* ===============================
-   CSS Variables
+   CSS Variables (Color System)
 =============================== */
 :root {
   /* Primary - Navy (corporate) */
-  --primary: 51, 66, 79;        /* #33424F */
-  --primary-dark: 38, 50, 60;   /* darker */
+  --primary: 51, 66, 79;          /* #33424F */
+  --primary-dark: 38, 50, 60;     /* darker */
   --primary-light: 101, 121, 139; /* #65798B */
 
   /* Secondary - Orange */
-  --secondary: 255, 102, 0;     /* #FF6600 */
-  --secondary-dark: 230, 95, 5; /* #E65F05 */
+  --secondary: 255, 102, 0;       /* #FF6600 */
+  --secondary-dark: 230, 95, 5;   /* #E65F05 */
 
   /* Neutrals */
-  --text-main: 51, 51, 51;      /* #333333 */
-  --text-muted: 107, 114, 128;  /* #6B7280 */
+  --text-main: 51, 51, 51;        /* #333333 */
+  --text-muted: 107, 114, 128;    /* #6B7280 */
 
   /* Background */
-  --bg-light: 240, 242, 245;    /* #F0F2F5 */
+  --bg-light: 240, 242, 245;      /* #F0F2F5 */
   --bg-white: 255, 255, 255;
 }
 
@@ -37,7 +32,9 @@
 =============================== */
 body {
   font-family: var(--font-body);
-  @apply bg-white text-gray-800 leading-relaxed;
+  background-color: rgb(var(--bg-white));
+  color: rgb(var(--text-main));
+  line-height: 1.75;
 }
 
 h1, h2, h3, h4, h5 {
@@ -57,18 +54,30 @@ h1, h2, h3, h4, h5 {
   }
 
   .btn-primary {
-    @apply bg-secondary text-white hover:bg-secondary-dark;
+    background-color: rgb(var(--secondary));
+    color: white;
+  }
+  .btn-primary:hover {
+    background-color: rgb(var(--secondary-dark));
   }
 
   .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary hover:text-white;
+    border: 1px solid rgb(var(--primary));
+    color: rgb(var(--primary));
+  }
+  .btn-outline:hover {
+    background-color: rgb(var(--primary));
+    color: white;
   }
 
   /* Navigation */
   .nav-link {
-    @apply px-3 py-2 hover:text-secondary transition-colors duration-200;
+    @apply px-3 py-2 transition-colors duration-200;
     font-family: var(--font-heading);
     font-weight: 500;
+  }
+  .nav-link:hover {
+    color: rgb(var(--secondary));
   }
 
   /* Sections */
@@ -77,18 +86,23 @@ h1, h2, h3, h4, h5 {
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-semibold text-primary mb-8 text-center;
+    @apply text-3xl md:text-4xl font-semibold mb-8 text-center;
     font-family: var(--font-heading);
+    color: rgb(var(--primary));
   }
 
   /* Cards */
   .service-card {
-    @apply bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg border-t-4 border-secondary;
+    @apply p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg;
+    background-color: rgb(var(--bg-white));
+    border-top: 4px solid rgb(var(--secondary));
   }
 
   /* Features */
   .feature-number {
-    @apply w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-4;
+    @apply w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mb-4;
     font-family: var(--font-heading);
+    background-color: rgb(var(--primary));
+    color: white;
   }
 }
