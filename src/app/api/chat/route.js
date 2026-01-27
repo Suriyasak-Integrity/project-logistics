@@ -12,24 +12,45 @@ export async function POST(req) {
       );
     }
 
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "llama3-8b-8192",
-        messages: [
-          { role: "user", content: message }
-        ],
-      }),
-    });
+    if (!process.env.GROQ_API_KEY) {
+      return NextResponse.json(
+        { error: "GROQ_API_KEY missing" },
+        { status: 500 }
+      );
+    }
 
-    const data = await res.json();
+    const res = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "llama3-8b-8192",
+          messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: message }
+          ],
+        }),
+      }
+    );
+
+    const text = await res.text();
+    console.log("GROQ RAW RESPONSE:", text);
+
+    if (!res.ok) {
+      return NextResponse.json(
+        { error: "Groq API error", detail: text },
+        { status: 500 }
+      );
+    }
+
+    const data = JSON.parse(text);
 
     return NextResponse.json({
-      reply: data.choices?.[0]?.message?.content || "No reply",
+      reply: data.choices[0].message.content,
     });
 
   } catch (err) {
