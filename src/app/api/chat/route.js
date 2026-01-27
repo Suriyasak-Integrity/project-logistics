@@ -7,24 +7,35 @@ export async function POST(req) {
     return Response.json({ error: "No message" }, { status: 400 });
   }
 
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch("https://api.kernel.ai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      Authorization: `Bearer ${process.env.KERNEL_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model: "kernel-chat",
       messages: [
         {
           role: "system",
           content:
-            "You are a helpful logistics assistant for a freight forwarder in Thailand.",
+            "You are a professional logistics assistant for a freight forwarder in Thailand. Answer clearly and politely.",
         },
-        { role: "user", content: message },
+        {
+          role: "user",
+          content: message,
+        },
       ],
     }),
   });
+
+  if (!res.ok) {
+    const err = await res.text();
+    return Response.json(
+      { error: "Kernel API error", detail: err },
+      { status: 500 }
+    );
+  }
 
   const data = await res.json();
 
