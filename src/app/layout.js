@@ -1,13 +1,25 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Roboto, Montserrat } from 'next/font/google';
 import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Analytics } from '@vercel/analytics/next';
 
-const inter = Inter({
+/* Body font */
+const roboto = Roboto({
   subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+/* Heading font */
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-heading',
+  display: 'swap',
 });
 
 export const metadata = {
@@ -17,8 +29,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${roboto.variable} ${montserrat.variable}`}>
+      <body>
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -42,6 +54,7 @@ export default function RootLayout({ children }) {
           {children}
           <Footer />
         </ThemeProvider>
+
         <Analytics />
       </body>
     </html>
