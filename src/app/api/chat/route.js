@@ -7,35 +7,24 @@ export async function POST(req) {
     return Response.json({ error: "No message" }, { status: 400 });
   }
 
-  const res = await fetch("https://api.kernel.ai/v1/chat/completions", {
+  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.KERNEL_API_KEY}`,
+      Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "kernel-chat",
+      model: "llama3-8b-8192",
       messages: [
         {
           role: "system",
           content:
-            "You are a professional logistics assistant for a freight forwarder in Thailand. Answer clearly and politely.",
+            "You are a helpful logistics assistant for a freight forwarder in Thailand. Answer clearly and professionally.",
         },
-        {
-          role: "user",
-          content: message,
-        },
+        { role: "user", content: message },
       ],
     }),
   });
-
-  if (!res.ok) {
-    const err = await res.text();
-    return Response.json(
-      { error: "Kernel API error", detail: err },
-      { status: 500 }
-    );
-  }
 
   const data = await res.json();
 
