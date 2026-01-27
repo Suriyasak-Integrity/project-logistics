@@ -1,24 +1,55 @@
+/* ===============================
+   Load Fonts
+=============================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500&display=swap');
+
+/* ===============================
+   Tailwind Base
+=============================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ===============================
+   CSS Variables
+=============================== */
 :root {
-  --primary: 26, 46, 90; /* #1A2E5A - Dark navy blue */
-  --primary-dark: 16, 32, 63; /* #10203F */
+  /* Colors */
+  --primary: 26, 46, 90;        /* #1A2E5A */
+  --primary-dark: 16, 32, 63;   /* #10203F */
   --primary-light: 42, 64, 106; /* #2A406A */
 
-  --secondary: 255, 107, 0; /* #FF6B00 - Deep orange */
-  --secondary-dark: 224, 90, 0; /* #E05A00 */
+  --secondary: 255, 107, 0;        /* #FF6B00 */
+  --secondary-dark: 224, 90, 0;    /* #E05A00 */
   --secondary-light: 255, 138, 51; /* #FF8A33 */
+
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
+/* ===============================
+   Global Typography
+=============================== */
 body {
-  @apply bg-white text-gray-800;
+  font-family: var(--font-body);
+  @apply bg-white text-gray-800 leading-relaxed;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+/* ===============================
+   Components
+=============================== */
 @layer components {
+
+  /* Buttons */
   .btn {
-    @apply px-4 py-2 rounded-md transition-all duration-300 font-medium;
+    @apply px-4 py-2 rounded-md transition-all duration-300 font-semibold;
+    font-family: var(--font-heading);
   }
 
   .btn-primary {
@@ -29,23 +60,31 @@ body {
     @apply border border-primary text-primary hover:bg-primary hover:text-white;
   }
 
+  /* Navigation */
   .nav-link {
     @apply px-3 py-2 hover:text-secondary transition-colors duration-200;
+    font-family: var(--font-heading);
+    font-weight: 500;
   }
 
+  /* Sections */
   .section {
     @apply py-16 px-4 md:px-8 max-w-7xl mx-auto;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-primary mb-8 text-center;
+    @apply text-3xl md:text-4xl font-semibold text-primary mb-8 text-center;
+    font-family: var(--font-heading);
   }
 
+  /* Cards */
   .service-card {
     @apply bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg border-t-4 border-secondary;
   }
 
+  /* Features */
   .feature-number {
     @apply w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-4;
+    font-family: var(--font-heading);
   }
 }
