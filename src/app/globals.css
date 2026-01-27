@@ -14,18 +14,22 @@
    CSS Variables
 =============================== */
 :root {
-  /* Colors */
-  --primary: 26, 46, 90;        /* #1A2E5A */
-  --primary-dark: 16, 32, 63;   /* #10203F */
-  --primary-light: 42, 64, 106; /* #2A406A */
+  /* Primary - Navy (corporate) */
+  --primary: 51, 66, 79;        /* #33424F */
+  --primary-dark: 38, 50, 60;   /* darker */
+  --primary-light: 101, 121, 139; /* #65798B */
 
-  --secondary: 255, 107, 0;        /* #FF6B00 */
-  --secondary-dark: 224, 90, 0;    /* #E05A00 */
-  --secondary-light: 255, 138, 51; /* #FF8A33 */
+  /* Secondary - Orange */
+  --secondary: 255, 102, 0;     /* #FF6600 */
+  --secondary-dark: 230, 95, 5; /* #E65F05 */
 
-  /* Typography */
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Neutrals */
+  --text-main: 51, 51, 51;      /* #333333 */
+  --text-muted: 107, 114, 128;  /* #6B7280 */
+
+  /* Background */
+  --bg-light: 240, 242, 245;    /* #F0F2F5 */
+  --bg-white: 255, 255, 255;
 }
 
 /* ===============================
