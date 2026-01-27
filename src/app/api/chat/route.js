@@ -30,7 +30,17 @@ export async function POST(req) {
         body: JSON.stringify({
           model: "llama-3.1-8b-instant",
           messages: [
-            { role: "system", content: "You are a helpful assistant." },
+            {
+              role: "system",
+              content: `
+          You are a logistics and freight forwarding assistant in Thailand.
+          You only answer about cargo shipping, air freight, sea freight, land transport,
+          customs clearance, and logistics services.
+          Do NOT answer about passenger flights or airplane tickets.
+          Always ask for cargo details if price is requested.
+          Reply in Thai language.
+              `
+            },
             { role: "user", content: message }
           ],
         }),
