@@ -74,7 +74,7 @@ export default function ContactPage() {
             <div className="mt-8 h-[400px] bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden">
               <iframe
                 className="border-0 w-full h-full"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5812570574933!2d100.54200631431867!3d13.730740901200057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d61f1a8959839%3A0xaac6d8831b316dc4!2sSukhumvit%20Rd%2C%20Khlong%20Toei%2C%20Bangkok%2C%20Thailand!5e0!3m2!1sen!2sus!4v1647934276157!5m2!1sen!2sus"
+                src=src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.686090948506!2d100.79750327586429!3d13.676841999022967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d43ae9f4a687b%3A0xfdec23331cbc6816!2sIntegrity%20Logistics%20(Thailand)%20Co.%2C%20Ltd.!5e0!3m2!1sen!2sth!4v1769753779037!5m2!1sen!2sth"
                 width="100%"
                 height="100%"
                 allowFullScreen={true}
